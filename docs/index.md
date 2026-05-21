@@ -8,7 +8,9 @@ h1:first-of-type {
 </style>
 
 # Cycling Retail Customer Analysis
-
+<p align="center">
+  <img src="images/cycling_front.jpg" width="800">
+</p>
 ## 1. Project Overview
 
 This project presents an end-to-end customer analysis pipeline for a cycling retail company, using three years of transactional data (2020–2022). The goal is to extract actionable business intelligence from raw sales, returns, and customer records through a combination of unsupervised machine learning, rule-based segmentation, and predictive modeling — complemented by an interactive Power BI dashboard.
