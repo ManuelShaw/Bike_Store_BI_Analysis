@@ -11,6 +11,20 @@ h1:first-of-type {
 <p align="center">
   <img src="images/cycling_front.jpg" width="800">
 </p>
+
+## Executive Summary
+
+This project presents an end-to-end customer analysis pipeline for a cycling retail company, built on 56,046 transactions, 18,154 customers, and 293 products spanning 2020 to 2022.
+
+On the product side, an **Isolation Forest** model flagged 7 anomalous products (~5% of the catalog), revealing two distinct behavioral profiles: high-volume demand outliers such as the Water Bottle - 30 oz. (7,967 units sold) and a high return rate outlier in the Road-650 Red, 52, which recorded an 11.76% return rate — the highest in the catalog by a significant margin.
+
+On the customer side, an **RFM segmentation** across 17,416 customers identified 7 actionable segments. Champions (1,968 customers, $4,013 avg. spend) and Can't Lose Them (1,683 customers, $3,828 avg. spend) represent the highest-value groups and should be the primary focus of retention and reactivation strategies respectively. Loyal Customers form the largest segment (4,537 customers) and represent the strongest upsell opportunity. At the other end, Lost and At Risk customers show clear churn signals with low recency and minimal monetary value.
+
+**Predictive modeling** revealed that demographic features alone are poor predictors of purchasing behavior — the Random Forest Classifier achieved only 24.3% accuracy on a 7-class problem, and R² values for the individual RFM regressors remained below 0.20. K-Means clustering confirmed this finding, with silhouette scores between 0.12 and 0.13 indicating no strong natural cluster structure in the data. Both results validate the rule-based RFM approach as the most appropriate segmentation framework for this customer base.
+
+The analytical findings are complemented by an **interactive Power BI dashboard** with three pages — an executive overview, a product-level drill-down with performance vs. targets and a price adjustment simulator, and a customer-level view with individual metrics and income-based segmentation.
+
+
 ## 1. Project Overview
 
 This project presents an end-to-end customer analysis pipeline for a cycling retail company, using three years of transactional data (2020–2022). The goal is to extract actionable business intelligence from raw sales, returns, and customer records through a combination of unsupervised machine learning, rule-based segmentation, and predictive modeling — complemented by an interactive Power BI dashboard.
@@ -68,6 +82,10 @@ The model identified 7 anomalous products, which fall into two distinct behavior
 | AWC Logo Cap | 4,151 | 46 | 1.11% | -0.019 |
 | Road Tire Tube | 4,327 | 67 | 1.55% | -0.004 |
 
+<p align="center">
+  <img src="images/Anomaly_chart.png" width="800">
+</p>
+
 ### 3.3 Interpretation
 
 Two distinct anomaly profiles emerge from the results:
@@ -103,6 +121,10 @@ The RFM model was applied to 17,416 customers with complete transactional record
 | New Customers | 2,574 | 53.7 | 1.0 | $692 | 60.9 | $58,726 |
 | At Risk | 2,261 | 276.8 | 1.1 | $598 | 59.9 | $53,689 |
 | Lost | 1,788 | 258.4 | 1.0 | $60 | 61.1 | $54,284 |
+
+<p align="center">
+  <img src="images/rfm_graph.png" width="800">
+</p>
 
 ### 4.3 Interpretation
 
@@ -230,4 +252,12 @@ The third page shifts the focus to the customer level. A toggle between **Total 
 </p>
 
 
+## 8. Conclusions
 
+This project demonstrates how a combination of unsupervised machine learning, rule-based segmentation, and business intelligence tooling can extract actionable insights from retail transactional data.
+
+On the product side, the Isolation Forest model successfully identified two distinct types of anomalous behavior within the catalog. High-volume products like the Water Bottle and Patch Kit stand out due to demand concentration rather than quality issues, while the Road-650 Red, 52 — with an 11.76% return rate — represents a genuine quality signal that warrants direct investigation. The ability to distinguish between these two anomaly profiles is precisely what makes a model-based approach more valuable than a simple threshold rule.
+
+On the customer side, the RFM segmentation produced seven interpretable and actionable segments across 17,416 customers. The Champions and Can't Lose Them segments, despite their similar spending profiles, require fundamentally different strategies: the former needs retention and reward, the latter urgently needs reactivation. The predictive modeling results reinforce an important finding — demographic features alone are poor predictors of purchasing behavior, with classifier accuracy at 24.3% and R² values below 0.20 across all three regressors. This is not a modeling failure; it is a meaningful result that confirms behavioral data is the right foundation for segmentation in this context. The K-Means exploration corroborates this conclusion, with silhouette scores between 0.12 and 0.13 indicating no strong natural cluster structure in the data.
+
+Together, these findings point to a clear priority order for business action: protect Champions, reactivate Can't Lose Them, upsell Loyal Customers, and investigate the Road-650 Red before the return pattern erodes its margin further.
