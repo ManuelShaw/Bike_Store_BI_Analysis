@@ -210,7 +210,7 @@ The dashboard includes a collapsible slicer panel, accessible via the filter ico
 Hovering over a category bar triggers a custom tooltip showing a **Weekly Orders** area chart alongside detailed KPIs for that category, including total revenue, profit, orders, returns, and return rate.
 
 <p align="center">
-  <img src="images/Dashboard 1.3 - Category_Tooltip.png" width="500">
+  <img src="images/Dashboard 1.3 - Category Tooltip.png" width="500">
 </p>
 
 ### 7.2 Product Detail
