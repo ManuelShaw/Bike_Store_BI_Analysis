@@ -198,7 +198,7 @@ A weekly revenue chart with a trend line illustrates the consistent growth traje
 On the right side, an orders-by-category bar chart shows that Accessories lead with 17,000 orders, followed by Bikes (13,900) and Clothing (7,000). A top 10 products table displays orders, revenue, and return rate per product — with return rates highlighted in red for values above a defined threshold. Dynamic cards surface the most ordered product type (**Tires and Tubes**) and the most returned product type (**Shorts**).
 
 <p align="center">
-  <img src="images/Dashboard 1.1 - Excec_Dashboard.jpg" width="800">
+  <img src="images/Dashboard_1.1_Excec_Dashboard.jpg" width="800">
 </p>
 
 The dashboard includes a collapsible slicer panel, accessible via the filter icon on the left sidebar, allowing users to filter all visuals by year (2020, 2021, 2022) and country (Australia, Canada, France, Germany, United Kingdom, United States).
@@ -226,6 +226,8 @@ The second page provides a drill-down view for individual products. Gauge charts
 The third page shifts the focus to the customer level. A toggle between **Total Customers** and **Avg Revenue per Customer** controls the weekly customers chart, allowing the user to switch between volume and value perspectives. A searchable customer table lists individual records with total orders and total revenue, with high-value customers highlighted. Two donut charts break down orders by income level bracket. Prominent KPI cards surface the **top revenue customer** (Mr. Maurice Shan, $12M) and the **customer with the most orders** (Mr. Dalton Perez, 26 orders).
 
 <p align="center">
-  <img src="images/Dashboard 3 - Customer_Detail.jpg" width="800">
+  <img src="images/Dashboard_3_Customer_Detail.jpg" width="800">
 </p>
+
+
 
