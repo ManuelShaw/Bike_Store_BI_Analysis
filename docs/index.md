@@ -123,7 +123,7 @@ The RFM model was applied to 17,416 customers with complete transactional record
 | Lost | 1,788 | 258.4 | 1.0 | $60 | 61.1 | $54,284 |
 
 <p align="center">
-  <img src="images/rfm graph.png" width="800">
+  <img src="images/RFM graph.png" width="800">
 </p>
 
 ### 4.3 Interpretation
