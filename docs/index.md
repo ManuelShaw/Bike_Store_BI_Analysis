@@ -127,7 +127,7 @@ The RFM model was applied to 17,416 customers with complete transactional record
 | Lost | 1,788 | 258.4 | 1.0 | $60 | 61.1 | $54,284 |
 
 <p align="center">
-  <img src="images/RFM graph.png" width="800">
+  <img src="images/RFM_graph.png" width="800">
 </p>
 
 ### 4.3 Interpretation
@@ -171,7 +171,7 @@ A Random Forest Classifier was trained to predict the RFM segment from demograph
 An accuracy of 24.3% on a 7-class problem is only marginally better than random chance (14.3%), indicating that demographic features have very limited power to distinguish between RFM segments. The model struggles particularly with segments that share similar demographic profiles — which, as the segment summary shows, is the case across almost all groups.
 
 <p align="center">
-  <img src="images/Feature importance RFC.png" width="800">
+  <img src="images/Feature_importance_RFC.png" width="800">
 </p>
 
 ### 5.4 Random Forest Regressors
@@ -187,7 +187,7 @@ Three separate Random Forest Regressors were trained to predict each RFM metric 
 All three models show poor predictive performance. Negative R² values for Recency and Frequency indicate that the models perform worse than a simple mean baseline. Monetary achieves a modest positive R² of 0.185, suggesting that income and occupation carry some signal for spending level — but not enough to be actionable on its own.
 
 <p align="center">
-  <img src="images/Feature importance RFR.png" width="800">
+  <img src="images/Feature_importance_RFR.png" width="800">
 </p>
 
 ### 5.5 Interpretation
@@ -214,7 +214,7 @@ The three RFM metrics (Recency, Frequency, Monetary) were standardized using `St
 The Elbow Method showed a gradual, continuous decline in inertia with no pronounced inflection point, making it difficult to identify a clear optimal K. Silhouette scores across all tested values remained consistently low, ranging between **0.12 and 0.13**, with no meaningful improvement as K increased.
 
 <p align="center">
-  <img src="images/Elbow & silhouette.png" width="800">
+  <img src="images/Elbow_&_silhouette.png" width="800">
 </p>
 
 ### 6.4 Interpretation
@@ -223,11 +223,11 @@ Silhouette scores in the 0.12–0.13 range indicate that the customer data does 
 
 This result directly supports the decision to rely on the **rule-based RFM segmentation** as the primary framework. Business-logic-driven segments may not be geometrically tight, but they are interpretable, stable, and grounded in domain knowledge — qualities that matter far more in a retail context than cluster compactness alone.
 
-## 7. Power BI Dashboard
+## 7. Module 5 - Power BI Dashboard
 
 The analytical findings from both modules were translated into an interactive Power BI report designed for business users. The report consists of three pages, each addressing a different level of analysis, and includes a collapsible slicer panel for filtering by year and country.
 
-### 7.1 Module 5 - Executive Dashboard
+### 7.1 Executive Dashboard
 
 The main page provides a high-level overview of business performance across the full period. Four KPI cards display the most critical metrics at a glance: **$25M in total revenue**, **$10M in total profit**, **25,160 total orders**, and a **2.17% overall return rate**.
 
@@ -236,19 +236,19 @@ A weekly revenue chart with a trend line illustrates the consistent growth traje
 On the right side, an orders-by-category bar chart shows that Accessories lead with 17,000 orders, followed by Bikes (13,900) and Clothing (7,000). A top 10 products table displays orders, revenue, and return rate per product — with return rates highlighted in red for values above a defined threshold. Dynamic cards surface the most ordered product type (**Tires and Tubes**) and the most returned product type (**Shorts**).
 
 <p align="center">
-  <img src="images/Dashboard 1.1 - Excec Dashboard.jpg" width="800">
+  <img src="images/Dashboard_1.1_Excec_Dashboard.jpg" width="800">
 </p>
 
 The dashboard includes a collapsible slicer panel, accessible via the filter icon on the left sidebar, allowing users to filter all visuals by year (2020, 2021, 2022) and country (Australia, Canada, France, Germany, United Kingdom, United States).
 
 <p align="center">
-  <img src="images/Dashboard 1.2 - Slicer Panel.png" width="400">
+  <img src="images/Dashboard_1.2_Slicer_Panel.png" width="400">
 </p>
 
 Hovering over a category bar triggers a custom tooltip showing a **Weekly Orders** area chart alongside detailed KPIs for that category, including total revenue, profit, orders, returns, and return rate.
 
 <p align="center">
-  <img src="images/Dashboard 1.3 - Category Tooltip.png" width="500">
+  <img src="images/Dashboard_1.3_Category_Tooltip.png" width="500">
 </p>
 
 ### 7.2 Product Detail
@@ -256,7 +256,7 @@ Hovering over a category bar triggers a custom tooltip showing a **Weekly Orders
 The second page provides a drill-down view for individual products. Gauge charts compare current orders, profit, and revenue against predefined targets, giving an immediate visual signal of whether a product is on track. An interactive **price adjustment slider** allows the user to simulate the impact of a price change on adjusted profit, displayed alongside the actual profit trend in a dual-line chart. A weekly returns area chart completes the view, enabling return pattern analysis over time for the selected product.
 
 <p align="center">
-  <img src="images/Dashboard 2 - Product Detail.jpg" width="800">
+  <img src="images/Dashboard_2_Product_Detail.jpg" width="800">
 </p>
 
 ### 7.3 Customer Detail
@@ -264,7 +264,7 @@ The second page provides a drill-down view for individual products. Gauge charts
 The third page shifts the focus to the customer level. A toggle between **Total Customers** and **Avg Revenue per Customer** controls the weekly customers chart, allowing the user to switch between volume and value perspectives. A searchable customer table lists individual records with total orders and total revenue, with high-value customers highlighted. Two donut charts break down orders by income level bracket. Prominent KPI cards surface the **top revenue customer** (Mr. Maurice Shan, $12M) and the **customer with the most orders** (Mr. Dalton Perez, 26 orders).
 
 <p align="center">
-  <img src="images/Dashboard 3 - Customer Detail.jpg" width="800">
+  <img src="images/Dashboard_3_Customer_Detail.jpg" width="800">
 </p>
 
 
