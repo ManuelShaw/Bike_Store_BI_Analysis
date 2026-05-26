@@ -29,13 +29,17 @@ The analytical findings are complemented by an **interactive Power BI dashboard*
 
 This project presents an end-to-end customer analysis pipeline for a cycling retail company, using three years of transactional data (2020–2022). The goal is to extract actionable business intelligence from raw sales, returns, and customer records through a combination of unsupervised machine learning, rule-based segmentation, and predictive modeling — complemented by an interactive Power BI dashboard.
 
-The analysis is structured in three modules:
+The analysis is structured in five modules:
 
 **1. Product Anomaly Detection** applies an Isolation Forest model to flag products whose sales volume and return behavior deviate significantly from the rest of the catalog. Given the heterogeneous nature of a cycling retail assortment — where accessories, components, and full bicycles have fundamentally different demand and return profiles — a model-based approach was preferred over static thresholds.
 
-**2. Customer Segmentation** combines a rule-based RFM framework (Recency, Frequency, Monetary value) with machine learning to profile the customer base. Random Forest models are then used to test whether demographic features can explain the resulting segments, and K-Means clustering is explored as an alternative unsupervised approach.
+**2. Customer Segmentation (RFM)** combines a rule-based RFM framework (Recency, Frequency, Monetary value) with machine learning to profile the customer base into seven actionable segments.
 
-**3. Business Intelligence Dashboard** translates the analytical findings into an interactive Power BI report with three pages: an executive view with global KPIs and revenue trends, a product drill-down with performance vs. targets and return tracking, and a customer detail view with individual-level metrics and income-based segmentation.
+**3. Predictive Modeling** uses Random Forest Classifier and Regressor models to test whether demographic features can explain or predict RFM-based segments, assessing the relationship between who the customer is and how they behave.
+
+**4. K-Means Clustering Exploration** evaluates whether natural groupings emerge from the data using an unsupervised approach, and contrasts the results against the rule-based RFM segmentation.
+
+**5. Business Intelligence Dashboard** translates the analytical findings into an interactive Power BI report with three pages: an executive view with global KPIs and revenue trends, a product drill-down with performance vs. targets and return tracking, and a customer detail view with individual-level metrics and income-based segmentation.
 
 
 ## 2. Data Sources
@@ -192,7 +196,7 @@ The consistent underperformance across both the classifier and the regressors po
 
 This finding reinforces the value of the RFM approach — behavioral data, not demographic data, is the right lens for segmenting this customer base.
 
-## 6. K-Means Clustering Exploration
+## 6. Module 4 - K-Means Clustering Exploration
 
 ### 6.1 Objective
 
@@ -223,7 +227,7 @@ This result directly supports the decision to rely on the **rule-based RFM segme
 
 The analytical findings from both modules were translated into an interactive Power BI report designed for business users. The report consists of three pages, each addressing a different level of analysis, and includes a collapsible slicer panel for filtering by year and country.
 
-### 7.1 Executive Dashboard
+### 7.1 Module 5 - Executive Dashboard
 
 The main page provides a high-level overview of business performance across the full period. Four KPI cards display the most critical metrics at a glance: **$25M in total revenue**, **$10M in total profit**, **25,160 total orders**, and a **2.17% overall return rate**.
 
