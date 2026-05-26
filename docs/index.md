@@ -167,7 +167,7 @@ A Random Forest Classifier was trained to predict the RFM segment from demograph
 An accuracy of 24.3% on a 7-class problem is only marginally better than random chance (14.3%), indicating that demographic features have very limited power to distinguish between RFM segments. The model struggles particularly with segments that share similar demographic profiles — which, as the segment summary shows, is the case across almost all groups.
 
 <p align="center">
-  <img src="images/Feature_importance_RFC.png" width="800">
+  <img src="images/Feature importance RFC.png" width="800">
 </p>
 
 ### 5.4 Random Forest Regressors
@@ -183,7 +183,7 @@ Three separate Random Forest Regressors were trained to predict each RFM metric 
 All three models show poor predictive performance. Negative R² values for Recency and Frequency indicate that the models perform worse than a simple mean baseline. Monetary achieves a modest positive R² of 0.185, suggesting that income and occupation carry some signal for spending level — but not enough to be actionable on its own.
 
 <p align="center">
-  <img src="images/Feature_importance_RFR.png" width="800">
+  <img src="images/Feature importance RFR.png" width="800">
 </p>
 
 ### 5.5 Interpretation
@@ -210,7 +210,7 @@ The three RFM metrics (Recency, Frequency, Monetary) were standardized using `St
 The Elbow Method showed a gradual, continuous decline in inertia with no pronounced inflection point, making it difficult to identify a clear optimal K. Silhouette scores across all tested values remained consistently low, ranging between **0.12 and 0.13**, with no meaningful improvement as K increased.
 
 <p align="center">
-  <img src="images/Elbow_&_silhouette.png" width="800">
+  <img src="images/Elbow & silhouette.png" width="800">
 </p>
 
 ### 6.4 Interpretation
