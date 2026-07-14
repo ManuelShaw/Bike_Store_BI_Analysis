@@ -1,5 +1,5 @@
 ---
-title: Cycling Retail Customer Analysis
+title: Business Analysis for Cycling Store
 ---
 <style>
 h1:first-of-type {
@@ -14,9 +14,9 @@ h1:first-of-type {
 
 ## Executive Summary
 
-This project presents an end-to-end customer analysis pipeline for a cycling retail company, built on 56,046 transactions, 18,154 customers, and 293 products spanning 2020 to 2022.
+This project presents an end-to-end data analysis for a cycling retail company, built on 56,046 transactions, 18,154 customers, and 293 products spanning 2020 to 2022.
 
-On the product side, an **Isolation Forest** model flagged 7 anomalous products (~5% of the catalog), revealing two distinct behavioral profiles: high-volume demand outliers such as the Water Bottle - 30 oz. (7,967 units sold) and a high return rate outlier in the Road-650 Red, 52, which recorded an 11.76% return rate — the highest in the catalog by a significant margin.
+On the product side, an **Isolation Forest** model caught 7 anomalous products (~5% of the catalog), revealing two distinct behavioral profiles: high-volume demand outliers such as the "Water Bottle - 30 oz." (7,967 units sold) and a high return rate outlier in the "Road-650 Red, 52", which recorded an 11.76% return rate, which is the highest in the catalog by a significant margin.
 
 On the customer side, an **RFM segmentation** across 17,416 customers identified 7 actionable segments. Champions (1,968 customers, $4,013 avg. spend) and Can't Lose Them (1,683 customers, $3,828 avg. spend) represent the highest-value groups and should be the primary focus of retention and reactivation strategies respectively. Loyal Customers form the largest segment (4,537 customers) and represent the strongest upsell opportunity. At the other end, Lost and At Risk customers show clear churn signals with low recency and minimal monetary value.
 
@@ -27,11 +27,11 @@ The analytical findings are complemented by an **interactive Power BI dashboard*
 
 ## 1. Project Overview
 
-This project presents an end-to-end customer analysis pipeline for a cycling retail company, using three years of transactional data (2020–2022). The goal is to extract actionable business intelligence from raw sales, returns, and customer records through a combination of unsupervised machine learning, rule-based segmentation, and predictive modeling — complemented by an interactive Power BI dashboard.
+This project presents an end-to-end data analysis for a cycling retail company, using three years of transactional data (2020–2022). The goal is to extract actionable business intelligence insights from raw sales, returns, and customer records through a combination of unsupervised machine learning, rule-based segmentation, and predictive modeling — complemented by an interactive Power BI dashboard.
 
 The analysis is structured in five modules:
 
-**1. Product Anomaly Detection** applies an Isolation Forest model to flag products whose sales volume and return behavior deviate significantly from the rest of the catalog. Given the heterogeneous nature of a cycling retail assortment — where accessories, components, and full bicycles have fundamentally different demand and return profiles — a model-based approach was preferred over static thresholds.
+**1. Product Anomaly Detection** applies an Isolation Forest model to find products whose sales volume and return behavior deviate significantly from the rest of the catalog.
 
 **2. Customer Segmentation (RFM)** combines a rule-based RFM framework (Recency, Frequency, Monetary value) with machine learning to profile the customer base into seven actionable segments.
 
@@ -62,15 +62,13 @@ All tables were joined on shared keys (`ProductKey`, `CustomerKey`, `TerritoryKe
 
 ### 3.1 Methodology
 
-For each product, three behavioral metrics were computed from the consolidated sales and returns data:
+For each product, three behavioral metrics were chosen from the consolidated sales and returns data:
 
 - **total_sold**: total units sold across the 2020–2022 period
 - **total_returned**: total units returned
 - **return_rate**: proportion of sold units that were returned
 
 An **Isolation Forest** model (`n_estimators=100`, `contamination=0.05`, `random_state=42`) was trained on these three features. The contamination parameter was set to 5%, meaning the model was configured to flag approximately 7 products out of the 293 in the catalog as anomalous.
-
-A model-based approach was chosen over static thresholds because the catalog is highly heterogeneous — accessories like water bottles sell thousands of units while specific bike models sell fewer than 100. A single threshold would either miss true anomalies in low-volume products or over-flag high-volume ones.
 
 ### 3.2 Flagged Products
 
@@ -94,7 +92,7 @@ The model identified 7 anomalous products, which fall into two distinct behavior
 
 Two distinct anomaly profiles emerge from the results:
 
-**High-volume outliers** — Water Bottle, Patch Kit, Mountain Tire Tube, Mountain Bottle Cage, AWC Logo Cap, and Road Tire Tube are flagged primarily due to their exceptionally high sales volume relative to the rest of the catalog. Their return rates are within a normal range, so the anomaly signal is driven by demand concentration rather than quality issues. These products likely warrant dedicated supply chain monitoring.
+**High-volume outliers** — Water Bottle, Patch Kit, Mountain Tire Tube, Mountain Bottle Cage, AWC Logo Cap, and Road Tire Tube are flagged primarily due to their exceptionally high sales volume in difference to the rest of the catalog. Their return rates are within a normal range, so the anomaly signal is driven by demand concentration rather than quality issues. These products likely warrant dedicated supply chain monitoring.
 
 **High return rate outlier** — Road-650 Red, 52 stands apart with a return rate of 11.76%, the highest in the catalog by a significant margin. With only 51 units sold, its volume is low, but 1 in 8 units was returned — a pattern that suggests a potential quality, sizing, or product description issue worth investigating.
 
@@ -108,7 +106,7 @@ Customer segmentation was built using the **RFM framework**, a widely used appro
 - **Frequency**: total number of orders placed over the period
 - **Monetary**: total revenue generated by the customer
 
-Each metric was divided into 5 quintiles and assigned a score from 1 to 5. Recency was scored inversely — a more recent purchase yields a higher score. The three scores were combined into a composite `RFM_Score`, which was then mapped to one of 7 business segments using a rule-based classification.
+Each metric was divided into 5 quintiles and assigned a score from 1 to 5. Recency was scored inversely which means that a more recent purchase yields a higher score. The three scores were combined into a composite `RFM_Score`, which was then mapped to one of 7 business segments using a rule-based classification.
 
 Prior to scoring, the Monetary distribution was log-transformed to reduce the influence of high-spending outliers on the quintile boundaries.
 
@@ -132,7 +130,7 @@ The RFM model was applied to 17,416 customers with complete transactional record
 
 ### 4.3 Interpretation
 
-**Champions** are the most valuable segment — recent, relatively frequent, and high-spending. With an average monetary value of $4,013 and a recency of just 53 days, they represent the core of the business and should be prioritized for retention and loyalty programs.
+**Champions** are the most valuable segment: recent, relatively frequent, and high-spending. With an average monetary value of $4,013 and a recency of just 53 days, they represent the core of the business and should be prioritized for retention and loyalty programs.
 
 **Can't Lose Them** share a similar spending profile to Champions ($3,828 average) but have not purchased in an average of 289 days. This is the most urgent segment for reactivation — these customers have demonstrated high value but are showing signs of disengagement.
 
@@ -140,7 +138,7 @@ The RFM model was applied to 17,416 customers with complete transactional record
 
 **New Customers** and **Potential Loyalists** represent growth opportunities. Both have low frequency and monetary value, but New Customers are recent (53.7 days) while Potential Loyalists have been inactive for over 200 days, suggesting different engagement strategies are needed for each.
 
-**At Risk** and **Lost** customers show the clearest signals of churn. The Lost segment in particular — with an average monetary value of just $60 — likely represents one-time or heavily lapsed buyers, where reactivation cost may outweigh the expected return.
+**At Risk** and **Lost** customers show the clearest signals of churn. The Lost segment in particular (with an average monetary value of just $60) likely represents one-time or heavily lapsed buyers, where reactivation cost may outweigh the expected return.
 
 
 ## 5. Module 3 — Predictive Modeling
@@ -149,14 +147,14 @@ The RFM model was applied to 17,416 customers with complete transactional record
 
 The goal of this module is to assess whether customer demographics can explain or predict RFM-based segments. If demographics were strong predictors of purchasing behavior, they could be used to anticipate segment membership for new customers before any transaction data is available.
 
-Two approaches were tested:
+Two methods were tested:
 
 - **Random Forest Classifier**: predicts the RFM segment label from demographic features
 - **Random Forest Regressor**: predicts each RFM metric (Recency, Frequency, Monetary) individually
 
 ### 5.2 Feature Engineering
 
-Customer age was derived from birth date using December 31, 2022 as the reference date. Education level was ordinally encoded on a 1–5 scale. The remaining categorical variables — Occupation, Gender, Marital Status, and Home Ownership — were one-hot encoded, resulting in a final feature set of 11 demographic variables:
+Customer age was derived from birth date using December 31, 2022 as the reference date. Education level was ordinally encoded on a 1–5 scale. The remaining categorical variables which are Occupation, Gender, Marital Status, and Home Ownership, were one-hot encoded, resulting in a final feature set of 11 demographic variables:
 
 `Age`, `AnnualIncome`, `TotalChildren`, `EducationLevel`, `Occupation_Management`, `Occupation_Manual`, `Occupation_Professional`, `Occupation_Skilled Manual`, `Gender_M`, `MaritalStatus_S`, `HomeOwner_Y`
 
@@ -168,7 +166,7 @@ A Random Forest Classifier was trained to predict the RFM segment from demograph
 
 **Test set accuracy: 0.243**
 
-An accuracy of 24.3% on a 7-class problem is only marginally better than random chance (14.3%), indicating that demographic features have very limited power to distinguish between RFM segments. The model struggles particularly with segments that share similar demographic profiles — which, as the segment summary shows, is the case across almost all groups.
+An accuracy of 24.3% on a 7-class problem is only marginally better than random chance (14.3%), indicating that demographic features have very limited power to distinguish between RFM segments. The model struggles particularly with segments that share similar demographic profiles which, as the segment summary shows, is the case across almost all groups.
 
 <p align="center">
   <img src="images/Feature_importance_RFC.png" width="800">
@@ -184,7 +182,7 @@ Three separate Random Forest Regressors were trained to predict each RFM metric 
 | Frequency | -0.339 |
 | Monetary | 0.185 |
 
-All three models show poor predictive performance. Negative R² values for Recency and Frequency indicate that the models perform worse than a simple mean baseline. Monetary achieves a modest positive R² of 0.185, suggesting that income and occupation carry some signal for spending level — but not enough to be actionable on its own.
+All three models show poor predictive performance. Negative R² values for Recency and Frequency indicate that the models perform worse than a simple mean baseline. Monetary achieves a modest positive R² of 0.185, suggesting that income and occupation carry some signal for spending level, but not enough to be actionable on its own.
 
 <p align="center">
   <img src="images/Feature_importance_RFR.png" width="800">
@@ -200,14 +198,14 @@ This finding reinforces the value of the RFM approach — behavioral data, not d
 
 ### 6.1 Objective
 
-As an alternative to the rule-based RFM segmentation, K-Means clustering was explored to assess whether the customer data contains natural groupings that emerge purely from geometric proximity in the RFM feature space — without relying on predefined business rules.
+As an alternative to the rule-based RFM segmentation, K-Means clustering was explored to assess whether the customer data contains natural groupings that emerge purely from geometric proximity in the RFM feature space, without relying on predefined business rules.
 
 ### 6.2 Methodology
 
 The three RFM metrics (Recency, Frequency, Monetary) were standardized using `StandardScaler` prior to clustering. K-Means was run for values of K ranging from 2 to 11, and two metrics were computed for each:
 
-- **Inertia (Elbow Method)**: measures within-cluster sum of squared distances; a pronounced elbow indicates a natural optimal K
-- **Silhouette Score**: measures how well-separated the clusters are; values range from -1 to 1, with higher being better
+- **Inertia (Elbow Method)**: measures within-cluster sum of squared distances, a pronounced elbow indicates a natural optimal K
+- **Silhouette Score**: measures how well separated the clusters are, values range from -1 to 1, with higher being better
 
 ### 6.3 Results
 
@@ -272,8 +270,8 @@ The third page shifts the focus to the customer level. A toggle between **Total 
 
 This project demonstrates how a combination of unsupervised machine learning, rule-based segmentation, and business intelligence tooling can extract actionable insights from retail transactional data.
 
-On the product side, the Isolation Forest model successfully identified two distinct types of anomalous behavior within the catalog. High-volume products like the Water Bottle and Patch Kit stand out due to demand concentration rather than quality issues, while the Road-650 Red, 52 — with an 11.76% return rate — represents a genuine quality signal that warrants direct investigation. The ability to distinguish between these two anomaly profiles is precisely what makes a model-based approach more valuable than a simple threshold rule.
+On the product side, the Isolation Forest model successfully identified two distinct types of anomalous behavior within the catalog. High-volume products like the Water Bottle and Patch Kit stand out due to demand concentration rather than quality issues, while the Road-650 Red, 52, with an 11.76% return rate, represents a genuine quality signal that warrants direct investigation. The ability to distinguish between these two anomaly profiles is precisely what makes a model-based approach more valuable than a simple threshold rule.
 
-On the customer side, the RFM segmentation produced seven interpretable and actionable segments across 17,416 customers. The Champions and Can't Lose Them segments, despite their similar spending profiles, require fundamentally different strategies: the former needs retention and reward, the latter urgently needs reactivation. The predictive modeling results reinforce an important finding — demographic features alone are poor predictors of purchasing behavior, with classifier accuracy at 24.3% and R² values below 0.20 across all three regressors. This is not a modeling failure; it is a meaningful result that confirms behavioral data is the right foundation for segmentation in this context. The K-Means exploration corroborates this conclusion, with silhouette scores between 0.12 and 0.13 indicating no strong natural cluster structure in the data.
+On the customer side, the RFM segmentation produced seven interpretable and actionable segments across 17,416 customers. The Champions and Can't Lose Them segments, despite their similar spending profiles, require fundamentally different strategies: the former needs retention and reward, the latter urgently needs reactivation. The predictive modeling results reinforce an important finding: demographic features alone are poor predictors of purchasing behavior, with classifier accuracy at 24.3% and R² values below 0.20 across all three regressors. This is not a modeling failure, it is a meaningful result that confirms behavioral data is the right foundation for segmentation in this context. The K-Means exploration corroborates this conclusion, with silhouette scores between 0.12 and 0.13 indicating no strong natural cluster structure in the data.
 
 Together, these findings point to a clear priority order for business action: protect Champions, reactivate Can't Lose Them, upsell Loyal Customers, and investigate the Road-650 Red before the return pattern erodes its margin further.
