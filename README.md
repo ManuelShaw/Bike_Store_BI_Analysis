@@ -10,7 +10,7 @@ The main notebook, covering two analytical modules:
 - **Customer Segmentation** — RFM scoring across 17,416 customers, followed by Random Forest Classifier and Regressor models to test whether demographics predict purchasing behavior, and K-Means clustering as an alternative unsupervised approach
 
 #### Bike Store Dashboard.pbix
-Power BI report with three pages: an executive overview, a product-level drill-down, and a customer detail view. Download the file to open it in Power BI Desktop — GitHub does not support in-browser preview of .pbix files. A full description of the dashboard and screenshots of each page are available in the project report.
+Power BI report with three pages: an executive overview, a product-level drill-down, and a customer detail view. Download the file to open it in Power BI Desktop (GitHub does not allow preview of .pbix files). A full description of the dashboard and screenshots of each page are available in the project report.
 
 #### docs/index.md
 Full project report covering methodology, results, and interpretation for each module, including all visualizations and dashboard screenshots.
