@@ -1,6 +1,6 @@
 ## Cycling Store Data Analysis
 
-An end-to-end customer analysis project for a cycling retail company, combining machine learning, behavioral segmentation, and business intelligence to extract actionable insights from three years of transactional data (2020–2022).
+An end-to-end data analysis project for a cycling retail company, combining machine learning, behavioral segmentation, and business intelligence to extract actionable insights from three years of transactional data (2020–2022).
 
 ### Contents
 
