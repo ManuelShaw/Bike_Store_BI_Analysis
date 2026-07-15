@@ -7,7 +7,7 @@ h1:first-of-type {
 }
 </style>
 
-# Cycling Retail Customer Analysis
+# Cycling Store Data Analysis
 <p align="center">
   <img src="images/cycling_front.jpg" width="800">
 </p>
